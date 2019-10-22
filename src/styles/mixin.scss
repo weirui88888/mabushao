@@ -1,0 +1,28 @@
+// 全局mixin-css
+
+@mixin text-overflow($width:100%,$display:block) {
+    width: $width;
+    display: $display;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@mixin clearfix {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+}
+
+//圆
+@mixin circle($size: 11px,$bg: yellow) {
+    border-radius: 50%;
+    width: $size;
+    height: $size;
+    line-height: $size;
+    text-align: center;
+    background: $bg;
+}
