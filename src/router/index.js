@@ -12,7 +12,10 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import(/* webpackChunkName: "dashboard" */'../views/dashboard')
+    component: () => import(/* webpackChunkName: "dashboard" */'../views/dashboard'),
+    meta: {
+      title: '首页'
+    }
   },
   {
     path: '/components',
@@ -22,17 +25,26 @@ const routes = [
       {
         path: 'mbs-page-header',
         name: 'pageHeader',
-        component: () => import(/* webpackChunkName: "pageHeader" */ '../views/components/mbs-page-header.vue')
+        component: () => import(/* webpackChunkName: "pageHeader" */ '../views/components/mbs-page-header.vue'),
+        meta: {
+          title: '页面头部'
+        }
       },
       {
         path: 'mbs-tag',
         name: 'mbsTag',
-        component: () => import(/* webpackChunkName: "mbsTag" */ '../views/components/mbs-tag.vue')
+        component: () => import(/* webpackChunkName: "mbsTag" */ '../views/components/mbs-tag.vue'),
+        meta: {
+          title: '自定义tag'
+        }
       },
       {
         path: 'mbs-group-input',
         name: 'mbsGroupInput',
-        component: () => import(/* webpackChunkName: "mbsGroupInput" */ '../views/components/mbs-group-input.vue')
+        component: () => import(/* webpackChunkName: "mbsGroupInput" */ '../views/components/mbs-group-input.vue'),
+        meta: {
+          title: '输入框组'
+        }
       }
     ]
   }
