@@ -1,7 +1,7 @@
 <template>
     <div class="page-header-container" :class="{'page-header-border-bottom':borderBottom}">
         <h4>
-            <span class="page-header-title">{{title}}</span>
+            <span class="page-header-title" :style="{color:titleColor}">{{title}}</span>
             <button-group v-bind="$attrs" v-if="hasButton" v-on="$listeners" class="pull-right"></button-group>
         </h4>
     </div>
@@ -22,6 +22,10 @@ export default {
     borderBottom: {
       type: Boolean,
       default: true
+    },
+    titleColor: {
+      type: String,
+      default: '#2679B8'
     }
   },
   computed: {
@@ -33,9 +37,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "~@/styles/mixin.scss";
 .page-header-container{
-    color:#2679B8;
     padding: 20px 0;
     h4{
         @include clearfix
