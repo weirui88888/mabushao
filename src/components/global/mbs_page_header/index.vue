@@ -8,12 +8,8 @@
 </template>
 
 <script>
-import buttonGroup from '@/components/global/buttonGroup/index.vue'
 export default {
   name: 'pageHeader',
-  components: {
-    buttonGroup
-  },
   props: {
     title: {
       type: String,

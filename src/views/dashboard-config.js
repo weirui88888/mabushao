@@ -22,5 +22,11 @@ module.exports = [
     demo: 'components/mbs-loading',
     remark: '全局Loading、支持js方式触发',
     code: '/views/components/mbs-loading.vue'
+  },
+  {
+    name: '分页',
+    demo: 'components/mbs-page',
+    remark: '分页',
+    code: '/views/components/mbs-page.vue'
   }
 ]

@@ -53,6 +53,14 @@ const routes = [
         meta: {
           title: '全局loading'
         }
+      },
+      {
+        path: 'mbs-page',
+        name: 'mbsPage',
+        component: () => import(/* webpackChunkName: "mbsPage" */'../views/components/mbs-page.vue'),
+        meta: {
+          title: '分页'
+        }
       }
     ]
   }
