@@ -1,6 +1,5 @@
 <template>
   <div class="dashboard-container w80 margin-20-auto">
-    i am you fans
     <table class="table table-hover table-bordered">
       <thead>
         <tr>

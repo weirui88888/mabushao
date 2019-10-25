@@ -16,5 +16,11 @@ module.exports = [
     demo: 'components/mbs-group-input',
     remark: '支持设置最多添加、灵活key值等',
     code: '/views/components/mbs-group-input.vue'
+  },
+  {
+    name: 'Loading',
+    demo: 'components/mbs-loading',
+    remark: '全局Loading、支持js方式触发',
+    code: '/views/components/mbs-loading.vue'
   }
 ]

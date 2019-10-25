@@ -45,6 +45,14 @@ const routes = [
         meta: {
           title: '输入框组'
         }
+      },
+      {
+        path: 'mbs-loading',
+        name: 'mbsLoading',
+        component: () => import(/* webpackChunkName: "mbsLoaing" */'../views/components/mbs-loading.vue'),
+        meta: {
+          title: '全局loading'
+        }
       }
     ]
   }
