@@ -55,9 +55,9 @@ const routes = [
         }
       },
       {
-        path: 'mbs-page',
-        name: 'mbsPage',
-        component: () => import(/* webpackChunkName: "mbsPage" */'../views/components/mbs-page.vue'),
+        path: 'mbs-pagination',
+        name: 'mbsPagination',
+        component: () => import(/* webpackChunkName: "mbsPage" */'../views/components/mbs-pagination.vue'),
         meta: {
           title: '分页'
         }

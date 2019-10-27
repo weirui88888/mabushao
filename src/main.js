@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 // import Vue from 'vue'
 import App from './App.vue'
-// import App from '@/components/global/mbs_page'
+// import App from '@/views/components/mbs-page.vue'
 import router from './router'
 import store from './store'
 import '@/styles/index.scss' // global css

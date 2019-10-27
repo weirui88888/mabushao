@@ -1,2 +1,2 @@
-import mbsPage from './index.vue'
-export default mbsPage
+import mbsPagination from './index.vue'
+export default mbsPagination

@@ -25,8 +25,8 @@ module.exports = [
   },
   {
     name: '分页',
-    demo: 'components/mbs-page',
+    demo: 'components/mbs-pagination',
     remark: '分页',
-    code: '/views/components/mbs-page.vue'
+    code: '/views/components/mbs-pagination.vue'
   }
 ]
