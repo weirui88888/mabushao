@@ -1,37 +1,37 @@
 <template>
-    <div class="pagination-wrap clearfix">
-        <nav aria-label="Page navigation" class="clearfix navigation-style" :class="[paginationPosition]">
-            <select class="form-control pull-left" :class="[paginationSelect]" v-model="pageSize" v-if="sizeList.length">
-                <option v-for="size in sizeList" :key="size" :value="size">每页{{size}}条</option>
-              </select>
-            <ul :class="[paginationSize]" class="pull-left">
-                <li class="hover-pointer" v-if="showQuickLinkFirst" @click.prevent="_goFirstPage">
-                    <a href="#" aria-label="First">
-                      <span aria-hidden="true">首页</span>
-                    </a>
-                </li>
-              <li @click.prevent="_prevClick" v-if="!disabledPrev" class="hover-pointer">
-                  <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
+  <div class="pagination-wrap clearfix">
+      <nav aria-label="Page navigation" class="clearfix navigation-style" :class="[paginationPosition]">
+          <select class="form-control pull-left" :class="[paginationSelect]" v-model="pagesize" v-if="sizeList.length">
+              <option v-for="size in sizeList" :key="size" :value="size">每页{{size}}条</option>
+            </select>
+          <ul :class="[paginationSize]" class="pull-left">
+              <li class="hover-pointer" v-if="showQuickLinkFirst" @click.prevent="_goFirstPage">
+                  <a href="#" aria-label="First">
+                    <span aria-hidden="true">首页</span>
                   </a>
               </li>
-              <li v-for="page in totalPage" :key="page" :class="{active:page === pageNumber}" @click.prevent="_onClick(page)"><a href="#">{{page}}</a></li>
-              <li @click.prevent="_nextClick" v-if="!disabledNext" class="hover-pointer">
-                  <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-              </li>
-              <li class="hover-pointer" v-if="showQuickLinkLast" @click.prevent="_goLastPage">
-                  <a href="#" aria-label="Last">
-                    <span aria-hidden="true">末页</span>
-                  </a>
-              </li>
-            </ul>
-            <section class="pagination-desc pull-left">
-              <span>每页{{pageSize}}条，共计{{totalNum}}条数据</span>
-            </section>
-          </nav>
-    </div>
+            <li @click.prevent="_prevClick" v-if="!disabledPrev" class="hover-pointer">
+                <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li v-for="page in totalPage" :key="page" :class="{active:page === pagenumber}" @click.prevent="_onClick(page)"><a href="#">{{page}}</a></li>
+            <li @click.prevent="_nextClick" v-if="!disabledNext" class="hover-pointer">
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            <li class="hover-pointer" v-if="showQuickLinkLast" @click.prevent="_goLastPage">
+                <a href="#" aria-label="Last">
+                  <span aria-hidden="true">末页</span>
+                </a>
+            </li>
+          </ul>
+          <section class="pagination-desc pull-left" v-if="showDesc">
+            <span>每页{{pagesize}}条，共计{{totalNum}}条数据</span>
+          </section>
+        </nav>
+  </div>
 </template>
 
 <script>
@@ -42,9 +42,13 @@ export default {
       type: Boolean,
       default: true
     },
+    showDesc: {
+      type: Boolean,
+      default: true
+    },
     position: {
       type: String,
-      default: 'right'
+      default: 'left'
     },
     sizeList: {
       type: Array,
@@ -80,7 +84,7 @@ export default {
     }
   },
   computed: {
-    // 分页大小
+  // 分页大小
     paginationSize () {
       let sizeConfig = {
         pagination: true
@@ -156,7 +160,7 @@ export default {
     }
   },
   methods: {
-    // 点击页码
+  // 点击页码
     _onClick (page) {
       if (page === this.pagenumber) return
       this.pagenumber = page
@@ -198,38 +202,38 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  .hover-pointer{
-    cursor: pointer;
-  }
-  .pagination-desc{
-    display: inline-block;
-    margin: 20px 0;
-    padding: 6px 0 6px 10px;
-    font-size: 14px;
-    color: #337ab7;
-    letter-spacing: 1.5px;
-  }
-  .pagination-sm+.pagination-desc{
-    font-size: 12px;
-  }
-  .pagination-lg+.pagination-desc{
-    font-size: 16px;
-    padding:11px 10px;
-  }
-  .pagination-select{
-    width: 100px;
-    margin: 20px 10px;
-    color:#337ab7;
-  }
-  .pagination-select.pagination-select-sm{
-    font-size: 12px;
-    height: 28px;
-    width: 80px;
-  }
-  .pagination-select.pagination-select-lg{
-    font-size: 16px;
-    height: 45px;
-    width: 120px;
-  }
+<style scoped>
+.hover-pointer{
+  cursor: pointer;
+}
+.pagination-desc{
+  display: inline-block;
+  margin: 20px 0;
+  padding: 6px 0 6px 10px;
+  font-size: 14px;
+  color: #337ab7;
+  letter-spacing: 1.5px;
+}
+.pagination-sm+.pagination-desc{
+  font-size: 12px;
+}
+.pagination-lg+.pagination-desc{
+  font-size: 16px;
+  padding:11px 10px;
+}
+.pagination-select{
+  width: 100px;
+  margin: 20px 10px;
+  color:#337ab7;
+}
+.pagination-select.pagination-select-sm{
+  font-size: 12px;
+  height: 28px;
+  width: 80px;
+}
+.pagination-select.pagination-select-lg{
+  font-size: 16px;
+  height: 45px;
+  width: 120px;
+}
 </style>
