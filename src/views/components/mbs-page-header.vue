@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <page-header title="组件标题" :borderBottom="true" :buttons="buttons" @edit="_onEdit" @add="_onAdd" :titleColor="variables.titleText"></page-header>
+    <page-header :timeConfig="Config" title="组件标题" :borderBottom="true" :buttons="buttons" @edit="_onEdit" @add="_onAdd" :titleColor="variables.titleText" @change="change"></page-header>
     <attribute-wrap :attrs="attrsConfig" class="mt20"></attribute-wrap>
   </div>
 </template>
@@ -13,6 +13,10 @@ export default {
   name: 'MbsPageHeaderDemo',
   data () {
     return {
+      Config: {
+        show: true,
+        time: ''
+      },
       buttons: [
         {
           key: '编辑',
@@ -39,6 +43,9 @@ export default {
     _onAdd () {
       console.log('add')
       this.tom.age = 20
+    },
+    change (time) {
+      console.log(time)
     }
   },
   computed: {

@@ -1,5 +1,7 @@
 const path = require('path')
 const merge = require('webpack-merge')
+const isProduction = process.env.NODE_ENV === 'production'
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const cdn = {
   css: [
     // element-ui css
@@ -35,16 +37,22 @@ module.exports = {
     hot: true
   },
   chainWebpack: config => {
-    // 移除 prefetch 插件
-    // config.plugins.delete('prefetch')
-    // 移除 preload 插件
-    // config.plugins.delete('preload')
+    if (isProduction) {
+      // 移除 prefetch 插件
+      config.plugins.delete('prefetch')
+      // 移除 preload 插件
+      config.plugins.delete('preload')
+    }
+    config.resolve.alias
+      .set('@', path.resolve(__dirname, 'src'))
+
     let externals = {
       'vue': 'Vue',
       'element-ui': 'ELEMENT',
       'jquery': '$',
       'bootstrap': 'bootstrap'
     }
+
     config.module
       .rule('images')
       .use('url-loader')
@@ -54,18 +62,29 @@ module.exports = {
         })
       )
     config.externals(externals)
+
     config.plugin('html')
       .tap(args => {
         args[0].cdn = cdn
         return args
       })
   },
-  configureWebpack: {
-    resolve: {
-      extensions: ['.js', '.vue', '.json'],
-      alias: {
-        '@': path.resolve(__dirname, 'src')
-      }
+  configureWebpack: config => {
+    if (isProduction) {
+      // 为生产环境修改配置...
+      // config.plugins.push(
+      //   // 生产环境自动删除console
+      //   new UglifyJsPlugin({
+      //     uglifyOptions: {
+      //       compress: {
+      //         drop_debugger: true,
+      //         drop_console: true
+      //       }
+      //     },
+      //     sourceMap: false,
+      //     parallel: true
+      //   })
+      // )
     }
   }
 }
