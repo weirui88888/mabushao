@@ -1,7 +1,7 @@
 const path = require('path')
 const merge = require('webpack-merge')
 const isProduction = process.env.NODE_ENV === 'production'
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const cdn = {
   css: [
     // element-ui css
