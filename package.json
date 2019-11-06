@@ -10,6 +10,7 @@
     "gh-pages": "gh-pages -a -d dist --remote origin -b gh-pages -r https://github.com/weirui88888/mabushao.git"
   },
   "dependencies": {
+    "async-validator": "^3.2.0",
     "core-js": "^3.1.2",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.10",

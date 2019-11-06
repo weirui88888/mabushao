@@ -1,15 +1,17 @@
 /* eslint-disable no-undef */
 // import Vue from 'vue'
-import App from './App.vue'
-// import App from '@/components/global/mbs_reduction'
+// import App from './App.vue'
+import App from '@/views/components/mbs-form.vue'
 import router from './router'
 import store from './store'
 import '@/styles/index.scss' // global css
 import '@/components/global'
-
+import Dialog from 'v-dialogs'
 import cusPlugin from '@/plugins'
 
 import 'normalize.css/normalize.css'
+console.log(Dialog)
+Vue.use(Dialog)
 Vue.use(cusPlugin)
 
 router.beforeEach((to, from, next) => {
