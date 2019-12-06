@@ -4,14 +4,13 @@
       <label :class="['control-label' , labelColumnWidth]"><i v-if="showIfRequire">*</i>{{label}}</label>
 
       <div :class="comColumnWidth">
-
         <input type="number" class="form-control" :placeholder="placeholder" v-model.number="msg" @blur="handleBlur" :style="styleItem" v-if=" type && type==='number'" :disabled="disabled">
         <input type="text" class="form-control" :placeholder="placeholder" v-model="msg" @blur="handleBlur" :style="styleItem" v-else>
         <error-tip v-bind="{validateInfo,showValidate}"></error-tip>
         <help-text :helpText="helpText"></help-text>
       </div>
-
       <after-text :after="after"></after-text>
+
     </div>
 </template>
 

@@ -12,7 +12,7 @@
       <tbody>
         <tr v-for="(com,index) in componentsList" :key="index">
             <td @click="jump(com.demo)">
-                <button type="button" class="btn btn-primary">{{com.name}}</button>
+                <button type="button" :class="['btn','btn-' + (com.btnType ? com.btnType:'primary')]">{{com.name}}</button>
             </td>
             <td @click="jump(com.demo)">
                 <button type="button" class="btn btn-link">{{com.demo}}</button>

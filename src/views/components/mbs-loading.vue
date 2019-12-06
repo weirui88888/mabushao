@@ -26,14 +26,6 @@ export default {
     }
   },
   mounted () {
-    // let that = this
-    // this.$mbsLoading.show({
-    //   title: '真的好想你',
-    //   timer: 3000,
-    //   callback () {
-    //     that.getMessage()
-    //   }
-    // })
   }
 }
 </script>

@@ -100,10 +100,11 @@ export default {
 
 <style lang="scss">
 .mbs-from-wrap {
-  .help-block {
+  .item-helptext {
     color: #737373;
     font-size: 12px;
-    margin-bottom : 0;
+    padding:8px 0;
+    display: inline-block;
   }
 }
 </style>

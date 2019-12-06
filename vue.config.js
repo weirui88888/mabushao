@@ -33,6 +33,7 @@ module.exports = {
   },
   publicPath: './',
   assetsDir: 'static',
+  // productionSourceMap: false,
   devServer: {
     hot: true
   },

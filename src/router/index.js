@@ -61,6 +61,22 @@ const routes = [
         meta: {
           title: '分页'
         }
+      },
+      {
+        path: 'mbs-form',
+        name: 'mbsForm',
+        component: () => import(/* webpackChunkName: "mbsForm" */'../views/components/mbs-form.vue'),
+        meta: {
+          title: 'Form表单生成器'
+        }
+      },
+      {
+        path: 'mbs-toast',
+        name: 'mbsToast',
+        component: () => import(/* webpackChunkName: "mbsToast" */'../views/components/mbs-toast.vue'),
+        meta: {
+          title: '自定义toast插件'
+        }
       }
     ]
   }
@@ -68,6 +84,22 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+router.afterEach((to, from) => {
+  setTimeout(() => {
+  // eslint-disable-next-line no-use-before-define
+    var hmt = hmt || [];
+    (function () {
+    // 每次执行前，先移除上次插入的代码
+      document.getElementById('baidu_tj') && document.getElementById('baidu_tj').remove()
+      var hm = document.createElement('script')
+      hm.src = 'https://hm.baidu.com/hm.js?9f6fc57c16036f9de3fa0d2644f21886'
+      hm.id = 'baidu_tj'
+      var s = document.getElementsByTagName('script')[0]
+      s.parentNode.insertBefore(hm, s)
+    })()
+  }, 0)
 })
 
 export default router

@@ -29,9 +29,12 @@ export default {
     mbsFrom
   },
   mounted () {
-    // this.$dlg.mask('form data saving')
-    // this.$dlg.alert('Data saved successfully!')
-
+    // this.$toast('form表单还在不断完善，有兴趣的可以一起加入进来～', {
+    //   type: 'warning',
+    //   closeTime: 3,
+    //   height: 100,
+    //   position: 'topRight'
+    // })
   },
   methods: {
     _onLogin () {
@@ -59,7 +62,7 @@ export default {
           column: '2',
           // disabled: true,
           placeholder: '这个item主要是说明可以通过传入type区分input类型',
-          helpText: '填写后不可更改',
+          helpText: '<i class="glyphicon glyphicon-info-sign"></i>填写后不可更改',
           type: 'number'
           // styleItem: {
           //   width: '200px'
@@ -83,6 +86,9 @@ export default {
             style: {
               'letter-spacing': '3px'
             }
+          },
+          styleItem: {
+            width: '200px'
           }
         },
         {
@@ -92,7 +98,7 @@ export default {
           column: '4',
           placeholder: '请输入书名',
           after: {
-            text: '要记得多看书哦',
+            html: '要记得多看书哦',
             style: {
               color: 'red',
               // 'font-weight': 'bold',
@@ -224,7 +230,7 @@ export default {
       value: {
         age: 18,
         name: 'xiaoming',
-        book: 'javascript',
+        book: '',
         email: 'ruiwei@163.com',
         remark: '',
         position: 'mid',
@@ -234,7 +240,7 @@ export default {
           { hero: '卡牌大师' },
           { hero: '提莫队长' }
         ],
-        time: []
+        time: ['2019-11-07 20:12:48', '2019-12-07 20:12:48']
       },
       validation: {
         age: [
