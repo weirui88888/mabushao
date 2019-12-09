@@ -21,10 +21,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.item-error-tip{
-    clear:both;
-    color: #a94442;
-    padding: 2px 0px;
-    font-size: 12px;
-}
+
 </style>

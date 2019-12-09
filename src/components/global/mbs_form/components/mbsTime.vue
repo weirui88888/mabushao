@@ -1,30 +1,31 @@
 <template>
 
-        <div class="form-group clearfix time-wrap" :class="{'has-error':showValidate}">
+        <div class="form-group clearfix time-wrap" :class="{'has-error':showValidate}" v-if="show">
 
                 <label :class="['control-label' , labelColumnWidth]"><i v-if="showIfRequire">*</i>{{label}}</label>
 
-                <div :class="comColumnWidth">
-                    <date-picker
-                    v-model="msg"
-                    lang="zh"
-                    :confirm="true"
-                    :editable="false"
-                    width="330"
-                    icon-day="日"
-                    confirm-text="确认"
-                    range-separator="至"
-                    v-on="$listeners"
-                    format="YYYY-MM-DD HH:mm:ss"
-                    range
-                    value-type="format"
-                    >
-                    </date-picker>
-                  <error-tip v-bind="{validateInfo,showValidate}"></error-tip>
-                  <help-text :helpText="helpText"></help-text>
+                <div :class="[comColumnWidth,'row']">
+                  <div :class="['pull-left',comWidth]">
+                      <date-picker
+                      v-model="msg"
+                      lang="zh"
+                      :confirm="true"
+                      :editable="false"
+                      icon-day="日"
+                      width="100%"
+                      confirm-text="确认"
+                      range-separator="至"
+                      v-on="$listeners"
+                      format="YYYY-MM-DD HH:mm:ss"
+                      range
+                      value-type="format"
+                      >
+                      </date-picker>
+                    </div>
+                    <after-text :after="after"></after-text>
+                    <error-tip v-bind="{validateInfo,showValidate}"></error-tip>
+                    <help-text :helpText="helpText"></help-text>
                 </div>
-
-                <after-text :after="after"></after-text>
               </div>
 </template>
 
@@ -55,10 +56,10 @@ export default {
       return 'col-sm-2'
     },
     comColumnWidth () {
-      if (this.column) {
-        return `col-sm-${this.column}`
-      }
-      return 'col-sm-10'
+      return `col-sm-${12 - this.labelColumn || 2}`
+    },
+    comWidth () {
+      return `col-sm-${this.column || 2}`
     }
   },
   watch: {
@@ -77,15 +78,6 @@ export default {
 </script>
 
 <style lang="scss">
-.form-group.time-wrap {
-    .control-label {
-    font-weight: normal;
-    color:#666;
-        i {
-            color:red;
-        }
-    }
-}
 .has-error .mx-datepicker input {
     border-color: #a94442;
 }

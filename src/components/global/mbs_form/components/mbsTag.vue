@@ -1,23 +1,26 @@
 <template>
 
-  <div class="form-group clearfix mbs-tag-wrap" :class="{'has-error':showValidate}">
+  <div class="form-group clearfix mbs-tag-wrap" :class="{'has-error':showValidate}" v-if="show">
 
     <label :class="['control-label' , labelColumnWidth]"><i v-if="showIfRequire">*</i>{{label}}</label>
 
-    <div :class="comColumnWidth">
-            <div v-for="(item, index) in msg" :key="index + item[tagKey]" class="mbs-tag-item" :class="[size, type]">
-                    {{ item[tagKey] }}
-                    <i v-if="!disabled" @click="deleteFn(item, index)">x</i>
-                  </div>
-                  <div v-if="!disabled && addable && !showInput" class="mbs-add-btn" :class="[size, type]" @click="addBtnFn"><span>+</span> {{ addBtn }}</div>
-                  <div v-if="showInput" class="tag-input">
-                    <input ref="tag" v-model="tagName" type="text" :maxlength="maxLength" :class="[size, type]" @blur="addTag">
-            </div>
+    <div :class="comColumnWidth" class="row">
+      <div :class="['pull-left',comWidth]" :style="styleItem">
+        <div v-for="(item, index) in msg" :key="index + item[tagKey]" class="mbs-tag-item" :class="[size, type]">
+          {{ item[tagKey] }}
+          <i v-if="!disabled" @click="deleteFn(item, index)">x</i>
+        </div>
+        <div v-if="!disabled && addable && !showInput" class="mbs-add-btn" :class="[size, type]" @click="addBtnFn">
+          <span>+</span> {{ addBtn }}</div>
+        <div v-if="showInput" class="tag-input">
+          <input ref="tag" v-model="tagName" type="text" :maxlength="maxLength" :class="[size, type]" @blur="addTag">
+        </div>
+      </div>
+      <after-text :after="after"></after-text>
       <error-tip v-bind="{validateInfo,showValidate}"></error-tip>
       <help-text :helpText="helpText"></help-text>
     </div>
 
-    <after-text :after="after"></after-text>
   </div>
 </template>
 <script>
@@ -120,10 +123,10 @@ export default {
       return 'col-sm-2'
     },
     comColumnWidth () {
-      if (this.column) {
-        return `col-sm-${this.column}`
-      }
-      return 'col-sm-10'
+      return `col-sm-${12 - this.labelColumn || 2}`
+    },
+    comWidth () {
+      return `col-sm-${this.column || 2}`
     }
   },
   mounted () {
@@ -145,7 +148,6 @@ export default {
       if (this.val.length < this.max) {
         this.addable = true
       }
-      this.val = this.val
     },
     addBtnFn () {
       this.showInput = true
@@ -169,13 +171,6 @@ export default {
 }
 </script>
     <style scoped>
-    .form-group .control-label{
-        font-weight: normal;
-        color:#666;
-    }
-    .form-group i {
-        color:red;
-    }
     .mbs-tag-item, .mbs-add-btn{
     background-color: rgba(64,158,255,.1);
     display: inline-block;

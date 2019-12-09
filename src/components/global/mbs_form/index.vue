@@ -5,6 +5,7 @@
           :key="field.name"
           :labelColumn="labelColumn"
           :is="field.component"
+          :VALUE="formValue"
           :val="formValue[field.name]"
           :EVENT_BUS="EVENT_BUS"
           :rules="validation[field.name]"
@@ -23,6 +24,8 @@ import mbsRadio from './components/mbsRadio.vue'
 import mbsButtonGroup from './components/mbsButtonGroup'
 import mbsTag from './components/mbsTag'
 import mbsTime from './components/mbsTime'
+import mbsStatic from './components/mbsStatic'
+import mbsInputNumber from './components/mbsInputNumber'
 import { createEventBus } from './utils'
 export default {
   name: 'mbsForm',
@@ -34,7 +37,9 @@ export default {
     mbsRadio,
     mbsButtonGroup,
     mbsTag,
-    mbsTime
+    mbsTime,
+    mbsStatic,
+    mbsInputNumber
   },
   props: ['fields', 'value', 'validation', 'labelColumn'],
   created () {
@@ -73,7 +78,7 @@ export default {
     },
     validate (cb) {
       let err = false
-      let len = this.fields.length
+      let len = this.validates.length
       this.validates.forEach((field, index) => {
         field.validate().then(res => {
           const { status } = res
@@ -99,12 +104,45 @@ export default {
 </script>
 
 <style lang="scss">
-.mbs-from-wrap {
+.form-horizontal {
+  .form-group {
+    margin-left: 0;
+    margin-right:0;
+  }
+  .pd15 {
+    padding: 0 15px;
+  }
+  .item-error-tip{
+    clear:both;
+    color: #a94442;
+    padding: 4px 15px;
+    font-size: 12px;
+  }
   .item-helptext {
     color: #737373;
     font-size: 12px;
-    padding:8px 0;
-    display: inline-block;
+    padding:5px 15px;
+    clear: both;
+  }
+  .before-text-wrap{
+    float: left;
+    color:#737373;
+    padding: 7px 0 7px 15px;
+  }
+  .after-text-wrap{
+    float: left;
+    padding:7px 0;
+    color:#737373;
+  }
+  .control-label {
+    color:#666;
+      i {
+          color:red;
+          padding:3px;
+      }
+  }
+  .form-control-static {
+    color: #737373;
   }
 }
 </style>

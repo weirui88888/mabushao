@@ -1,15 +1,18 @@
 <template>
-  <div class="form-group clearfix" :class="{'has-error':showValidate}">
+  <div class="form-group clearfix" :class="{'has-error':showValidate}" v-if="show">
     <label :class="['control-label' , labelColumnWidth]"><i v-if="showIfRequire">*</i>{{label}}</label>
-    <div :class="comColumnWidth">
-      <label class="radio-inline" v-for="option in options" :key="option.value">
-        <input type="radio" name="inlineRadioOptions" :value="option.value" :checked="option.value===msg"
-          @change="msg = option.value"> {{option.label}}
-      </label>
+
+    <div :class="comColumnWidth" class="row">
+      <div :class="['pull-left',comWidth]">
+          <label class="radio-inline" v-for="option in options" :key="option.value">
+            <input type="radio" :name="name" :value="option.value" :checked="option.value===msg"
+              @change="msg = option.value"> {{option.label}}
+          </label>
+      </div>
+      <after-text :after="after"></after-text>
       <error-tip v-bind="{validateInfo,showValidate}"></error-tip>
       <help-text :helpText="helpText"></help-text>
     </div>
-    <after-text :after="after"></after-text>
   </div>
 </template>
 
@@ -62,10 +65,10 @@ export default {
       return 'col-sm-2'
     },
     comColumnWidth () {
-      if (this.column) {
-        return `col-sm-${this.column}`
-      }
-      return 'col-sm-10'
+      return `col-sm-${12 - this.labelColumn || 2}`
+    },
+    comWidth () {
+      return `col-sm-${this.column || 2}`
     }
   },
   data () {
@@ -80,13 +83,6 @@ export default {
 
 <style lang="scss" scoped>
 .form-group {
-    .control-label {
-        font-weight: normal;
-        color:#666;
-        i {
-            color:red;
-        }
-    }
     &.has-error {
         .checkbox-inline{
             color:#555;

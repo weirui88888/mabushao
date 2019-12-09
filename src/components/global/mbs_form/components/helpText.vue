@@ -5,7 +5,7 @@
  * @Email: weirui@zhiketong.cn
  -->
 <template>
-    <span class="item-helptext" v-if="helpText" v-html="helpText"></span>
+    <div class="item-helptext" v-if="helpText" v-html="helpText"></div>
 </template>
 
 <script>

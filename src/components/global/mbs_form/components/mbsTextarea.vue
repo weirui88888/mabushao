@@ -1,15 +1,17 @@
 <template>
-        <div class="form-group clearfix" :class="{'has-error':showValidate}">
+        <div class="form-group clearfix" :class="{'has-error':showValidate}" v-if="show">
 
           <label :class="['control-label' , labelColumnWidth]"><i v-if="showIfRequire">*</i>{{label}}</label>
 
-          <div :class="comColumnWidth">
-            <textarea class="form-control" :placeholder="placeholder" v-model="msg" @blur="handleBlur" :style="styleItem" :rows="rows || 3"></textarea>
-            <error-tip v-bind="{validateInfo,showValidate}"></error-tip>
-            <help-text :helpText="helpText"></help-text>
+          <div :class="comColumnWidth" class="row">
+              <div :class="['pull-left',comWidth]" :style="styleItem">
+                  <textarea class="form-control" :placeholder="placeholder" v-model="msg" @blur="handleBlur" :rows="rows || 3"></textarea>
+                  <error-tip v-bind="{validateInfo,showValidate}"></error-tip>
+                  <help-text :helpText="helpText"></help-text>
+              </div>
+              <after-text :after="after"></after-text>
           </div>
 
-          <after-text :after="after"></after-text>
         </div>
     </template>
 
@@ -45,10 +47,10 @@ export default {
       return 'col-sm-2'
     },
     comColumnWidth () {
-      if (this.column) {
-        return `col-sm-${this.column}`
-      }
-      return 'col-sm-10'
+      return `col-sm-${12 - this.labelColumn || 2}`
+    },
+    comWidth () {
+      return `col-sm-${this.column || 2}`
     }
   },
   data () {
@@ -60,15 +62,3 @@ export default {
   }
 }
 </script>
-
-    <style lang="scss" scoped>
-    .form-group {
-      .control-label {
-        font-weight: normal;
-        color:#666;
-        i {
-          color:red;
-        }
-      }
-    }
-    </style>

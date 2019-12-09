@@ -1,19 +1,23 @@
 <template>
-        <div class="form-group clearfix" :class="{'has-error':showValidate}">
+        <div class="form-group clearfix" :class="{'has-error':showValidate}" v-if="show">
 
           <label :class="['control-label' , labelColumnWidth]"><i v-if="showIfRequire">*</i>{{label}}</label>
 
-          <div :class="comColumnWidth">
-            <!-- <textarea class="form-control" :placeholder="placeholder" v-model="msg" @blur="handleBlur" :style="styleItem" :rows="rows || 3"></textarea> -->
-            <select class="form-control" v-model="msg" @change="handleChange">
-                <option value="">请选择</option>
-                <option v-for="option in options" :value="option.value" :key="option.value">{{option.label}}</option>
-            </select>
+          <div :class="comColumnWidth" class="row">
+            <before-text :before="before"></before-text>
+
+            <div :class="['pull-left',comWidth]" :style="styleItem">
+              <select class="form-control" v-model="msg" @change="handleChange">
+                  <option value="">请选择</option>
+                  <option v-for="option in options" :value="option.value" :key="option.value">{{option.label}}</option>
+              </select>
+            </div>
+
+            <after-text :after="after"></after-text>
             <error-tip v-bind="{validateInfo,showValidate}"></error-tip>
             <help-text :helpText="helpText"></help-text>
           </div>
 
-          <after-text :after="after"></after-text>
         </div>
     </template>
 
@@ -24,14 +28,16 @@ import Validate from '../mixins/validate'
 import errorTip from './errorTip'
 import helpText from './helpText'
 import afterText from './afterText'
+import beforeText from './beforeText'
 export default {
   name: 'mbsSelect',
   mixins: [Validate, Base],
-  props: ['label', 'rules', 'val', 'name', 'helpText', 'EVENT_BUS', 'labelColumn', 'column', 'styleItem', 'after', 'disabled', 'options'],
+  props: ['label', 'rules', 'val', 'name', 'helpText', 'EVENT_BUS', 'labelColumn', 'column', 'styleItem', 'before', 'after', 'disabled', 'options'],
   components: {
     errorTip,
     helpText,
-    afterText
+    afterText,
+    beforeText
   },
   methods: {
     handleChange () {
@@ -49,10 +55,10 @@ export default {
       return 'col-sm-2'
     },
     comColumnWidth () {
-      if (this.column) {
-        return `col-sm-${this.column}`
-      }
-      return 'col-sm-10'
+      return `col-sm-${12 - this.labelColumn || 2}`
+    },
+    comWidth () {
+      return `col-sm-${this.column || 2}`
     }
   },
   data () {
@@ -64,15 +70,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.form-group {
-    .control-label {
-    font-weight: normal;
-    color:#666;
-    i {
-        color:red;
-    }
-    }
-}
-</style>

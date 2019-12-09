@@ -1,5 +1,25 @@
 import { checkType } from '../utils'
 export default {
+  props: {
+    visible: {
+      type: Function,
+      default () {
+        return {}
+      }
+    },
+    VALUE: {
+      type: Object,
+      default () {
+        return {}
+      }
+    }
+  },
+  data () {
+    return {
+      // 判断展示该组件
+      show: true
+    }
+  },
   computed: {
     msg: {
       get: function () {
@@ -30,9 +50,25 @@ export default {
     }
   },
   mounted () {
-    this.$props.EVENT_BUS.$emit('on-form-item-add', this)
+    if (this.$props.EVENT_BUS) {
+      this.$props.EVENT_BUS.$emit('on-form-item-add', this)
+    }
   },
   beforeDestroy () {
-    this.$props.EVENT_BUS.$emit('on-form-item-remove', this)
+    if (this.$props.EVENT_BUS) {
+      this.$props.EVENT_BUS.$emit('on-form-item-remove', this)
+    }
+  },
+  watch: {
+    // 观察到原始数据的变化，判断是否展示该组件
+    'VALUE': {
+      handler () {
+        if (this.visible) {
+          this.show = this.visible(this.VALUE)
+        }
+      },
+      immediate: true,
+      deep: true
+    }
   }
 }

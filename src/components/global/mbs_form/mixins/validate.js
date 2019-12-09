@@ -30,7 +30,6 @@ export default {
           [this.name]: this.rules
         }
         let validator = new Schema(descriptor)
-
         validator.validate({ [this.name]: this.msg }, (err, fields) => {
           let state = !err ? 'success' : 'error'
           let msg = err ? err[0].message : ''
