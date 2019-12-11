@@ -56,9 +56,6 @@ export default {
     offsetClass () {
       return `col-sm-offset-${this.labelColumn} col-sm-${12 - this.labelColumn}`
     }
-  },
-  mounted () {
-    console.log(this.show)
   }
 
 }

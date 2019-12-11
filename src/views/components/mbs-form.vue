@@ -60,7 +60,7 @@ export default {
           name: 'testCumcom',
           component: testCumcom,
           label: '自定义组件',
-          column: '4'
+          column: '6'
         },
         {
           name: 'age',
@@ -319,7 +319,23 @@ export default {
         }
       ],
       value: {
-        testCumcom: '我是自定义传进来的数据',
+        testCumcom: [
+          {
+            name: '小明',
+            age: 18,
+            pretty: 'play game'
+          },
+          {
+            name: '小红',
+            age: 22,
+            pretty: 'reading'
+          },
+          {
+            name: '老张',
+            age: 35,
+            pretty: 'smoking'
+          }
+        ],
         inputNumber: 0,
         age: 18,
         static: '我是静态文字哦，也可以不用传label',

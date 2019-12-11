@@ -200,7 +200,7 @@ input[type='number'] {
     background: #f5f7fa;
 }
 .mbs-btn:hover{
-    color:#409eff;
+    color:#66afe9;
 }
 .mbs-input-number-container:hover{
   border: 1px solid #66afe9;
