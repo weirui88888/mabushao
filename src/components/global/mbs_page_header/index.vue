@@ -11,7 +11,7 @@
 <script>
 import DatePicker from 'vue2-datepicker'
 export default {
-  name: 'pageHeader',
+  name: 'PageHeader',
   components: {
     DatePicker
   },

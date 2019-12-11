@@ -5,9 +5,9 @@
 
       <div :class="comColumnWidth" class="row">
             <before-text :before="before"></before-text>
-            <div :class="['mbs-input-number-container','pull-left',disabled]" :style="styleItem">
+            <div :class="['mbs-input-number-container','pull-left',disabled]">
                 <button class="pull-left mbs-btn mbs-btn-left" type="button" @click="reduce" :class="[{reduceDisable:reduceDisable,mbsBtnDisable:disabled},size]">-</button>
-                <input  class="pull-left mbs-input" type="number" :value="msg" :disabled="disabled" :class="[{mbsInputDisable:disabled},size]" @change="handleInputChange($event)" :placeholder="placeholder">
+                <input  class="pull-left mbs-input" type="number" :value="msg" :disabled="disabled" :class="[{mbsInputDisable:disabled},size]" @change="handleInputChange($event)" :placeholder="placeholder" :readonly="readonly">
                 <button class="pull-left mbs-btn mbs-btn-right" type="button" @click="add" :class="[{addDisable:addDisable,mbsBtnDisable:disabled},size]">+</button>
             </div>
             <after-text :after="after"></after-text>
@@ -38,6 +38,9 @@ export default {
     name: {
       type: String
     },
+    rules: {
+      type: [Array, Object]
+    },
     label: {
       type: String,
       default: ''
@@ -62,7 +65,7 @@ export default {
     },
     max: {
       type: Number,
-      default: 1000
+      default: 99999
     },
     step: {
       type: Number,
@@ -83,6 +86,10 @@ export default {
     },
     after: {
       type: Object
+    },
+    readonly: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -159,6 +166,11 @@ export default {
       }
       this.msg = Number(targetValue)
     }
+  },
+  watch: {
+    msg (val) {
+      this.validate()
+    }
   }
 }
 </script>
@@ -213,7 +225,7 @@ input[type='number'] {
     text-align: center;
     padding: 6px 0;
     width: 100px;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc ;
     outline: none;
 }
 .mbs-input.medium{

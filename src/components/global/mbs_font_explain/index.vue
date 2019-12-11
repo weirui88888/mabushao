@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'fontExplain',
+  name: 'FontExplain',
   props: {
     title: {
       type: String,

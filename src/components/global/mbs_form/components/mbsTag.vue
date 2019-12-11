@@ -5,7 +5,7 @@
     <label :class="['control-label' , labelColumnWidth]"><i v-if="showIfRequire">*</i>{{label}}</label>
 
     <div :class="comColumnWidth" class="row">
-      <div :class="['pull-left',comWidth]" :style="styleItem">
+      <div :class="['pull-left',comWidth]">
         <div v-for="(item, index) in msg" :key="index + item[tagKey]" class="mbs-tag-item" :class="[size, type]">
           {{ item[tagKey] }}
           <i v-if="!disabled" @click="deleteFn(item, index)">x</i>
@@ -16,7 +16,6 @@
           <input ref="tag" v-model="tagName" type="text" :maxlength="maxLength" :class="[size, type]" @blur="addTag">
         </div>
       </div>
-      <after-text :after="after"></after-text>
       <error-tip v-bind="{validateInfo,showValidate}"></error-tip>
       <help-text :helpText="helpText"></help-text>
     </div>
@@ -57,17 +56,11 @@ export default {
         return {}
       }
     },
-    after: {
-      type: Object,
-      default () {
-        return {}
-      }
-    },
     labelColumn: {
       type: Number
     },
     column: {
-      type: Number
+      type: [Number, String]
     },
     helpText: {
       type: String,

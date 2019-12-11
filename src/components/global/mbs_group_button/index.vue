@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'buttonGroup',
+  name: 'ButtonGroup',
   props: {
     buttons: {
       type: Array,

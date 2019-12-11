@@ -26,9 +26,10 @@ import mbsTag from './components/mbsTag'
 import mbsTime from './components/mbsTime'
 import mbsStatic from './components/mbsStatic'
 import mbsInputNumber from './components/mbsInputNumber'
+import mbsSwitch from './components/mbsSwitch'
 import { createEventBus } from './utils'
 export default {
-  name: 'mbsForm',
+  name: 'MbsForm',
   components: {
     mbsInput,
     mbsTextarea,
@@ -39,7 +40,8 @@ export default {
     mbsTag,
     mbsTime,
     mbsStatic,
-    mbsInputNumber
+    mbsInputNumber,
+    mbsSwitch
   },
   props: ['fields', 'value', 'validation', 'labelColumn'],
   created () {

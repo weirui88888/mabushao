@@ -45,7 +45,7 @@ export default {
         if (err) {
           console.log('验证失败')
         } else {
-          console.log('验证成功', values)
+          alert(JSON.stringify(values))
         }
       })
     },
@@ -139,20 +139,40 @@ export default {
           helpText: '<i class="glyphicon glyphicon-info-sign" style="color:#337ab7;"></i>邮箱保存后不可更改'
         },
         {
+          name: 'switchCheck',
+          component: 'mbsSwitch',
+          label: 'switch开关',
+          column: '4',
+          slider: {
+            open: '开',
+            close: '关'
+          },
+          disabled: false,
+          helpText: '<i class="glyphicon glyphicon-info-sign" style="color:#337ab7;"></i>switch打开后，需要填写备注信息，支持传入滑块字段'
+        },
+        {
           name: 'remark',
           component: 'mbsTextarea',
           label: '备注',
           column: '4',
           placeholder: '文本域',
-          rows: 6
+          rows: 6,
+          visible (data) {
+            return data.switchCheck === true
+          }
         },
         {
           name: 'inputNumber',
+          step: 2,
           component: 'mbsInputNumber',
           label: '数字计数器',
           column: '4',
+          readonly: true,
           placeholder: '数字计数器',
-          helpText: '<i class="glyphicon glyphicon-info-sign" style="color:#337ab7;"></i> 请输入整数值'
+          helpText: '<i class="glyphicon glyphicon-info-sign" style="color:#337ab7;"></i>可以设置累加的间隔，默认为step为1，支持设置readonly',
+          after: {
+            text: '元'
+          }
         },
         {
           name: 'position',
@@ -309,9 +329,10 @@ export default {
         remark: '',
         position: 'mid',
         favourite: ['ko'],
-        sex: 'man',
+        sex: 'woman',
         switch: 0,
         switchTime: 30,
+        switchCheck: true, // 支持boolean和number
         job: [
           { hero: '卡牌大师' },
           { hero: '提莫队长' }
@@ -398,6 +419,12 @@ export default {
           {
             required: true,
             'message': '请输入开关断开时间'
+          }
+        ],
+        inputNumber: [
+          {
+            type: 'integer',
+            message: '请输入整数'
           }
         ]
       }

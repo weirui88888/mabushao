@@ -11,7 +11,7 @@ const cdn = {
   ],
   js: [
     // vue must at first!
-    'https://cdn.bootcss.com/vue/2.6.10/vue.min.js',
+    'https://cdn.bootcss.com/vue/2.6.10/vue.js',
     // element-ui js
     'https://cdn.bootcss.com/element-ui/2.12.0/index.js',
     // jquery
