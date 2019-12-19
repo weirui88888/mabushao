@@ -109,7 +109,7 @@ export default {
           label: '书籍',
           column: '4',
           placeholder: '请输入',
-          type: 'number',
+          type: 'text',
           before: {
             text: '前缀可以添加在这里'
           },
@@ -117,7 +117,7 @@ export default {
             text: '后缀可以添加在这里'
           },
           styleItem: {
-            width: '120px'
+            width: '200px'
           }
         },
         {
@@ -180,7 +180,7 @@ export default {
             text: '选择后将按照该位置进行排位'
           },
           styleItem: {
-            width: '100px'
+            width: '120px'
           },
           options: [
             {
@@ -350,7 +350,7 @@ export default {
         age: 18,
         static: '我是静态文字哦，也可以不用传label',
         name: 'xiaoming',
-        book: 2,
+        book: '人民的名义',
         email: 'ruiwei@163.com',
         remark: '',
         position: 'mid',

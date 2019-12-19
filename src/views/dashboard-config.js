@@ -1,6 +1,6 @@
 module.exports = [
   {
-    name: '表单生成器',
+    name: 'vue表单生成器',
     demo: 'components/mbs-form',
     remark: '可通过配置快速生成表单及表单验证项',
     code: '/views/components/mbs-form.vue',

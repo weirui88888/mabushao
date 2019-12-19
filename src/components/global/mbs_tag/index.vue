@@ -12,7 +12,7 @@
   </template>
 <script>
 export default {
-  name: 'MbsTagDemo',
+  name: 'MbsTag',
   props: {
     disabled: {
       type: Boolean,
