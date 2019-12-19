@@ -27,6 +27,7 @@ import mbsTime from './components/mbsTime'
 import mbsStatic from './components/mbsStatic'
 import mbsInputNumber from './components/mbsInputNumber'
 import mbsSwitch from './components/mbsSwitch'
+import mbsEditor from './components/mbsEditor'
 import { createEventBus } from './utils'
 export default {
   name: 'MbsForm',
@@ -41,7 +42,8 @@ export default {
     mbsTime,
     mbsStatic,
     mbsInputNumber,
-    mbsSwitch
+    mbsSwitch,
+    mbsEditor
   },
   props: ['fields', 'value', 'validation', 'labelColumn'],
   created () {

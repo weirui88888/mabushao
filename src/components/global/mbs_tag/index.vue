@@ -1,11 +1,3 @@
-<!--
-disabled: 非必传 是否可添加删除
-type：非必传 颜色success info warning danger
-size：非必传 大小 medium  small mini
-max: 最多添加tag数量
-用法示例：
-<mbs-tag v-bind="{disabled, type, size}"/>
--->
 <template>
     <div class="mbs-tag-wrap">
       <div v-for="(item, index) in val" :key="index + item[tagKey]" class="mbs-tag-item" :class="[size, type]">
@@ -20,7 +12,7 @@ max: 最多添加tag数量
   </template>
 <script>
 export default {
-  name: 'MbsTag',
+  name: 'MbsTagDemo',
   props: {
     disabled: {
       type: Boolean,

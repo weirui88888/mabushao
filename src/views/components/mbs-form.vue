@@ -57,12 +57,6 @@ export default {
     return {
       fields: [
         {
-          name: 'testCumcom',
-          component: testCumcom,
-          label: '自定义组件',
-          column: '6'
-        },
-        {
           name: 'age',
           component: 'mbsInput',
           label: '年龄',
@@ -80,10 +74,10 @@ export default {
           styleItem: {
             // fontWeight: 'bold'
           },
-          iconItem: {
-            icon: 'heart',
-            position: 'right'
-          },
+          // iconItem: {
+          //   icon: 'heart',
+          //   position: 'right'
+          // },
           visible (data) {
             return data.sex === 'woman'
           }
@@ -299,6 +293,22 @@ export default {
           maxLength: 10 // 文本长度
         },
         {
+          name: 'testCumcom',
+          component: testCumcom,
+          label: '自定义组件',
+          column: '6'
+        },
+        {
+          name: 'editor',
+          component: 'mbsEditor',
+          label: '图文编辑',
+          column: '4',
+          styleItem: {
+            width: '720px'
+          },
+          helpText: '<i class="glyphicon glyphicon-info-sign" style="color:#337ab7;"></i>请不要涉及敏感信息，否则会被驳回'
+        },
+        {
           name: 'button',
           component: 'mbsButtonGroup',
           fullScree: false,
@@ -353,7 +363,8 @@ export default {
           { hero: '卡牌大师' },
           { hero: '提莫队长' }
         ],
-        time: ['2019-11-07 20:12:48', '2019-12-07 20:12:48']
+        time: ['2019-11-07 20:12:48', '2019-12-07 20:12:48'],
+        editor: '<h1 style="text-align:center;">富文本编辑器</h1>'
       },
       validation: {
         age: [

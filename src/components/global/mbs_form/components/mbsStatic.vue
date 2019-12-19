@@ -3,9 +3,9 @@
       <label :class="['control-label' , labelColumnWidth]"><i v-if="showIfRequire">*</i>{{label}}</label>
       <div :class="comColumnWidth" class="row">
           <div :class="['pull-left',comWidth,'form-control-static']" :style="styleItem">
-            <i v-if="iconItem.icon && iconItem.position==='left'" :class="['glyphicon',' glyphicon-'+iconItem.icon]"></i>
+            <i v-if="iconItem && iconItem.icon && iconItem.position==='left'" :class="['glyphicon',' glyphicon-'+iconItem.icon]"></i>
             {{msg}}
-            <i v-if="iconItem.icon && iconItem.position==='right'" :class="['glyphicon',' glyphicon-'+iconItem.icon]"></i>
+            <i v-if="iconItem && iconItem.icon && iconItem.position==='right'" :class="['glyphicon',' glyphicon-'+iconItem.icon]"></i>
           </div>
         </div>
   </div>
