@@ -40,7 +40,7 @@ export default {
   methods: {
     _onLogin () {
       // TODO:自定义表单里面的按钮，不起作用
-      // console.log(this.$refs.mbsForm.validate)
+      // console.log(thiresetFieldss.$refs.mbsForm.validate)
       this.$refs.mbsForm.validate((err, values) => {
         if (err) {
           console.log('验证失败')
@@ -152,7 +152,7 @@ export default {
           placeholder: '文本域',
           rows: 6,
           visible (data) {
-            return data.switchCheck === true
+            return data.switchCheck === true || data.switchCheck === 1
           }
         },
         {
@@ -358,7 +358,7 @@ export default {
         sex: 'woman',
         switch: 0,
         switchTime: 30,
-        switchCheck: true, // 支持boolean和number
+        switchCheck: 1, // 支持boolean和number
         job: [
           { hero: '卡牌大师' },
           { hero: '提莫队长' }
